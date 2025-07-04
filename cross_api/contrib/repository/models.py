@@ -1,0 +1,3 @@
+from cross_api.categorias.models import CategoriaModel
+from cross_api.atleta.models import AtletaModel
+from cross_api.centro_treinamento.models import CentroTreinamentoModel
