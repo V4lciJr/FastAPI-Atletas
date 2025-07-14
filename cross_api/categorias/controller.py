@@ -18,6 +18,7 @@ router = APIRouter()
 async def post(
         db_session: DatabaseDependency,
         categoria_in: CategoriaIn = Body(...)) -> CategoriaOut:
+
     categoria_out = CategoriaOut(id=uuid4(), **categoria_in.model_dump())
     categoria_model = CategoriaModel(**categoria_out.model_dump())
 
