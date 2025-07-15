@@ -1,6 +1,7 @@
 from datetime import datetime
 from uuid import uuid4
-from fastapi import APIRouter, status, Body, HTTPException
+from fastapi import APIRouter, status, Body, HTTPException, Query
+from typing import Optional
 from pydantic import UUID4
 
 from cross_api.contrib.dependencies import DatabaseDependency
@@ -9,6 +10,10 @@ from cross_api.atleta.models import AtletaModel
 from cross_api.categorias.models import CategoriaModel
 from cross_api.centro_treinamento.models import CentroTreinamentoModel
 from sqlalchemy.future import select
+from sqlalchemy.exc import IntegrityError
+
+from fastapi_pagination import Page, paginate
+from fastapi_pagination.ext.sqlalchemy import paginate as sqlalchemy_paginate
 
 router = APIRouter()
 
@@ -51,7 +56,14 @@ async def post(
 
         db_session.add(atleta_model)
         await db_session.commit()
+    except IntegrityError:
+        await db_session.rollback()
+        raise HTTPException(
+            status_code=status.HTTP_303_SEE_OTHER,
+            detail=f'Já existe um atleta cadastrado com o cpf: {atleta_in.cpf}'
+        )
     except Exception:
+        await db_session.rollback()
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f'Ocerreu um erro ao inserir os dados no banco'
@@ -65,10 +77,32 @@ async def post(
             status_code=status.HTTP_200_OK,
             response_model=list[AtletaOut]
             )
-async def query(db_session: DatabaseDependency) -> list[AtletaOut]:
-    atletas: list[AtletaOut] = (await db_session.execute(select(AtletaModel))).scalars().all()
+async def query(db_session: DatabaseDependency,
+                nome: Optional[str] = Query(None, description='Filtrar por nome do atleta'),
+                cpf: Optional[str] = Query(None, description='Filtrar por CPF do atleta')
+) -> Page[AtletaOut]:
 
-    return [AtletaOut.model_validate(atleta) for atleta in atletas]
+    query_statement = select(AtletaModel)
+
+    if nome:
+        query_statement = query_statement.filter(AtletaModel.nome.ilike(f'%{nome}%'))
+
+    if cpf:
+        query_statement = query_statement.filter(AtletaModel.cpf == cpf)
+
+    pagina_atletas = await sqlalchemy_paginate(db_session, query_statement)
+
+    pagina_atletas.items = [
+        AtletaOut(
+           nome=atleta.nome,
+           centro_treinamento=atleta.centro_treinamento.nome if atleta.centro_treinamento else None,
+           categoria=atleta.categoria.nome if atleta.categoria else None
+        )
+
+       for atleta in pagina_atletas.items
+    ]
+
+    return pagina_atletas
 
 
 @router.get('/{id}',
