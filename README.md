@@ -1,47 +1,47 @@
-# ?????? Atleta API
+# ğŸ‹ï¸â€â™€ï¸ Atleta API
 
-Este projeto oferece uma API robusta para gerenciar informações de atletas, incluindo seus detalhes pessoais, centros de treinamento e categorias associadas. Construído com **FastAPI** e **SQLAlchemy**, ele proporciona uma solução limpa, eficiente e bem estruturada para o backend da sua aplicação de fitness.
+Este projeto oferece uma API robusta para gerenciar informaÃ§Ãµes de atletas, incluindo seus detalhes pessoais, centros de treinamento e categorias associadas. ConstruÃ­do com **FastAPI** e **SQLAlchemy**, ele proporciona uma soluÃ§Ã£o limpa, eficiente e bem estruturada para o backend da sua aplicaÃ§Ã£o de fitness.
 
 -----
 
-## ? Funcionalidades
+## âœ¨  Funcionalidades
 
-  * **Gerenciamento de Atletas**: Operações CRUD (Criar, Ler, Atualizar, Deletar) completas para registros de atletas.
+  * **Gerenciamento de Atletas**: OperaÃ§Ãµes CRUD (Criar, Ler, Atualizar, Deletar) completas para registros de atletas.
   * **Integridade de Dados**: Tratamento robusto da integridade de dados, prevenindo especificamente entradas de CPF duplicadas para atletas.
-  * **Parâmetros de Consulta**: ?? Filtre atletas por `nome` e `cpf` para uma recuperação de dados precisa.
+  * **ParÃ¢metros de Consulta**: ğŸ” Filtre atletas por **nome** e **cpf** para uma recuperaÃ§Ã£o de dados precisa.
   * **Respostas Customizadas**: O endpoint de "listar todos os atletas" fornece uma resposta otimizada, mostrando apenas detalhes essenciais como nome do atleta, nome do centro de treinamento associado e nome da categoria.
-  * **Paginação**: ?? Recupere grandes conjuntos de dados de forma eficiente usando os parâmetros de consulta `limit` e `offset`, impulsionado pela biblioteca `fastapi-pagination`.
+  * **PaginaÃ§Ã£o**:ğŸ“ƒ Recupere grandes conjuntos de dados de forma eficiente usando os parÃ¢metros de consulta `limit` e `offset`, impulsionado pela biblioteca `fastapi-pagination`.
 
 -----
 
-## ??? Tecnologias Utilizadas
+## ğŸ› ï¸ Tecnologias Utilizadas
 
-  * **FastAPI**: Um framework web moderno, rápido e de alta performance para construir APIs com Python 3.7+ baseado em type hints padrão do Python.
+  * **FastAPI**: Um framework web moderno, rÃ¡pido e de alta performance para construir APIs com Python 3.7+ baseado em type hints padrÃ£o do Python.
   * **SQLAlchemy**: O toolkit SQL e Mapeador Objeto-Relacional do Python que oferece aos desenvolvedores o poder e a flexibilidade completos do SQL.
-  * **Pydantic**: Validação de dados e gerenciamento de configurações usando type hints do Python.
-  * **fastapi-pagination**: Paginação simples e leve para FastAPI.
-  * **PostgreSQL**: (Assumido como banco de dados, com base no uso típico de SQLAlchemy e restrições de unicidade como CPF).
+  * **Pydantic**: ValidaÃ§Ã£o de dados e gerenciamento de configuraÃ§Ãµes usando type hints do Python.
+  * **fastapi-pagination**: PaginaÃ§Ã£o simples e leve para FastAPI.
+  * **PostgreSQL**: (Assumido como banco de dados, com base no uso tÃ­pico de SQLAlchemy e restriÃ§Ãµes de unicidade como CPF).
 
 -----
 
-## ?? Primeiros Passos
+## ğŸš€ Primeiros Passos
 
-Estas instruções ajudarão você a ter uma cópia do projeto funcionando em sua máquina local para desenvolvimento e testes.
+Estas instruÃ§Ãµes ajudarÃ£o vocÃª a ter uma cÃ³pia do projeto funcionando em sua mÃ¡quina local para desenvolvimento e testes.
 
-### Pré-requisitos
+### PrÃ©-requisitos
 
-Antes de começar, certifique-se de ter:
+Antes de comeÃ§ar, certifique-se de ter:
 
   * Python 3.8+ instalado.
-  * Uma instância do banco de dados PostgreSQL rodando e acessível.
+  * Uma instÃ¢ncia do banco de dados PostgreSQL rodando e acessÃ­vel.
 
-### Instalação
+### InstalaÃ§Ã£o
 
-1.  **Clone o repositório:**
+1.  **Clone o repositÃ³rio:**
 
     ```bash
-    git clone <url-do-seu-repositorio>
-    cd atleta-api # ou o nome do seu diretório de projeto
+    git clone <https://github.com/V4lciJr/FastAPI-Atletas>
+    cd atleta-api # ou o nome do seu diretÃ³rio de projeto
     ```
 
 2.  **Crie um ambiente virtual (recomendado):**
@@ -51,24 +51,24 @@ Antes de começar, certifique-se de ter:
     source venv/bin/activate  # No Windows: `venv\Scripts\activate`
     ```
 
-3.  **Instale as dependências:**
+3.  **Instale as dependÃªncias:**
 
     ```bash
     pip install -r requirements.txt
-    # Se você não tiver um requirements.txt, precisará instalá-los individualmente:
+    # Se vocÃª nÃ£o tiver um requirements.txt, precisarÃ¡ instalÃ¡-los individualmente:
     # pip install fastapi uvicorn sqlalchemy asyncpg pydantic fastapi-pagination[sqlalchemy]
     ```
 
-4.  **Configuração do Banco de Dados:**
+4.  **ConfiguraÃ§Ã£o do Banco de Dados:**
 
-      * Configure sua string de conexão com o banco de dados em suas variáveis de ambiente ou em um arquivo de configuração (ex: `.env`). Uma string de conexão SQLAlchemy típica para PostgreSQL se parece com:
+      * Configure sua string de conexÃ£o com o banco de dados em suas variÃ¡veis de ambiente ou em um arquivo de configuraÃ§Ã£o (ex: `.env`). Uma string de conexÃ£o SQLAlchemy tÃ­pica para PostgreSQL se parece com:
         `postgresql+asyncpg://usuario:senha@host:porta/nome_do_banco`
 
-5.  **Execute as Migrações (se aplicável):**
+5.  **Execute as MigraÃ§Ãµes (se aplicÃ¡vel):**
 
-      * Se você estiver usando Alembic ou similar para migrações de banco de dados, execute seus comandos de migração aqui para criar as tabelas necessárias (`atletas`, `categorias`, `centros_treinamento`).
+      * Se vocÃª estiver usando Alembic ou similar para migraÃ§Ãµes de banco de dados, execute seus comandos de migraÃ§Ã£o aqui para criar as tabelas necessÃ¡rias (`atletas`, `categorias`, `centros_treinamento`).
 
-### Executando a Aplicação
+### Executando a AplicaÃ§Ã£o
 
 Para iniciar a API usando Uvicorn:
 
@@ -76,50 +76,50 @@ Para iniciar a API usando Uvicorn:
 uvicorn main:app --reload
 ```
 
-Substitua `main:app` pelo caminho real para a sua instância da aplicação FastAPI. A flag `--reload` permite o recarregamento automático durante o desenvolvimento.
+Substitua `main:app` pelo caminho real para a sua instÃ¢ncia da aplicaÃ§Ã£o FastAPI. A flag `--reload` permite o recarregamento automÃ¡tico durante o desenvolvimento.
 
 -----
 
-## ?? Endpoints da API
+## ğŸ”— Endpoints da API
 
-Uma vez que a aplicação esteja rodando, você pode acessar a documentação da API em:
+Uma vez que a aplicaÃ§Ã£o esteja rodando, vocÃª pode acessar a documentaÃ§Ã£o da API em:
 
-  * **Swagger UI**: `http://127.0.0.1:8000/docs` ??
-  * **ReDoc**: `http://127.0.0.1:8000/redoc` ??
+  * **Swagger UI**: `http://127.0.0.1:8000/docs` ğŸ“š
+  * **ReDoc**: `http://127.0.0.1:8000/redoc` ğŸ“–
 
-Aqui está uma visão geral dos principais endpoints:
+Aqui estÃ¡ uma visÃ£o geral dos principais endpoints:
 
 ### Atletas (`/atletas`)
 
-  * **`POST /`**: ? Cria um novo atleta.
-      * **Corpo da Requisição**: Schema `AtletaIn` (inclui detalhes do atleta, nome da categoria e nome do centro de treinamento).
-      * **Tratamento de Erro**: Retorna `303 See Other` se um CPF já existir.
-  * **`GET /`**: ?? Recupera uma lista de todos os atletas com filtros e paginação opcionais.
-      * **Parâmetros de Consulta**:
-          * `nome` (opcional): Filtra por nome do atleta (correspondência parcial, não sensível a maiúsculas/minúsculas).
+  * **`POST /`**: â•  Cria um novo atleta.
+      * **Corpo da RequisiÃ§Ã£o**: Schema `AtletaIn` (inclui detalhes do atleta, nome da categoria e nome do centro de treinamento).
+      * **Tratamento de Erro**: Retorna `303 See Other` se um CPF jÃ¡ existir.
+  * **`GET /`**: ğŸ“œ  Recupera uma lista de todos os atletas com filtros e paginaÃ§Ã£o opcionais.
+      * **ParÃ¢metros de Consulta**:
+          * `nome` (opcional): Filtra por nome do atleta (correspondÃªncia parcial, nÃ£o sensÃ­vel a maiÃºsculas/minÃºsculas).
           * `cpf` (opcional): Filtra por CPF exato.
-          * `limit` (opcional): Número de itens por página (para paginação).
-          * `offset` (opcional): Número de itens a serem pulados (para paginação).
+          * `limit` (opcional): NÃºmero de itens por pÃ¡gina (para paginaÃ§Ã£o).
+          * `offset` (opcional): NÃºmero de itens a serem pulados (para paginaÃ§Ã£o).
       * **Resposta**: Uma lista paginada de objetos `AtletaCustomOut` (nome, nome do centro de treinamento, nome da categoria).
-  * **`GET /{id}`**: ?? Recupera um único atleta pelo seu UUID.
+  * **`GET /{id}`**: ğŸ†”  Recupera um Ãºnico atleta pelo seu UUID.
       * **Resposta**: Schema `AtletaOut`.
-      * **Tratamento de Erro**: Retorna `404 Not Found` se o ID do atleta não for encontrado.
-  * **`PATCH /{id}`**: ?? Atualiza os detalhes de um atleta existente pelo seu UUID.
-      * **Corpo da Requisição**: Schema `AtletaUpdate` (permite atualizações parciais para nome e idade).
+      * **Tratamento de Erro**: Retorna `404 Not Found` se o ID do atleta nÃ£o for encontrado.
+  * **`PATCH /{id}`**: âœï¸  Atualiza os detalhes de um atleta existente pelo seu UUID.
+      * **Corpo da RequisiÃ§Ã£o**: Schema `AtletaUpdate` (permite atualizaÃ§Ãµes parciais para nome e idade).
       * **Resposta**: Schema `AtletaOut` com os detalhes atualizados.
-      * **Tratamento de Erro**: Retorna `404 Not Found` se o ID do atleta não for encontrado.
-  * **`DELETE /{id}`**: ??? Deleta um atleta pelo seu UUID.
-      * **Resposta**: `204 No Content` em caso de exclusão bem-sucedida.
-      * **Tratamento de Erro**: Retorna `404 Not Found` se o ID do atleta não for encontrado.
+      * **Tratamento de Erro**: Retorna `404 Not Found` se o ID do atleta nÃ£o for encontrado.
+  * **`DELETE /{id}`**: ğŸ—‘ï¸ Deleta um atleta pelo seu UUID.
+      * **Resposta**: `204 No Content` em caso de exclusÃ£o bem-sucedida.
+      * **Tratamento de Erro**: Retorna `404 Not Found` se o ID do atleta nÃ£o for encontrado.
 
 -----
 
-## ?? Contribuindo
+## ğŸ¤ Contribuindo
 
-Contribuições são bem-vindas\! Sinta-se à vontade para abrir issues ou enviar pull requests.
+ContribuiÃ§Ãµes sÃ£o bem-vindas\! Sinta-se Ã  vontade para abrir issues ou enviar pull requests.
 
 -----
 
-## ?? Licença
+## ğŸ“„  LicenÃ§a
 
-Este projeto é de código aberto e está disponível sob a [Licença MIT](https://www.google.com/search?q=LICENSE). (Você deve criar um arquivo `LICENSE` em seu repositório se ainda não o fez).
+Este projeto Ã© de cÃ³digo aberto e estÃ¡ disponÃ­vel sob a [LicenÃ§a MIT](https://www.google.com/search?q=LICENSE). (VocÃª deve criar um arquivo `LICENSE` em seu repositÃ³rio se ainda nÃ£o o fez).
