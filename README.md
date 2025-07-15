@@ -122,4 +122,4 @@ Contribuições são bem-vindas\! Sinta-se à vontade para abrir issues ou envia
 
 ## 📄  Licença
 
-Este projeto é de código aberto e está disponível sob a [Licença MIT](https://www.google.com/search?q=LICENSE). (Você deve criar um arquivo `LICENSE` em seu repositório se ainda não o fez).
+Este projeto é de código aberto e está disponível sob a [Licença MIT](https://www.google.com/search?q=LICENSE)
